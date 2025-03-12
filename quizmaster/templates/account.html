@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Account Page</h2>
+<p>Welcome, {{ current_user.Full_Name }}!</p>
+<p>Email: {{ current_user.Email }}</p>
+<p>Qualification: {{ current_user.Qualification }}</p>
+<p>Date of Birth: {{ current_user.dob }}</p>
+{% endblock %}

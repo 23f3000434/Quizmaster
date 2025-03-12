@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card rounded">
+                <div class="card-header">
+                    <h3 class="text-center">Register</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        
+                        <!-- Full Name -->
+                        <div class="mb-3">
+                            {{ form.Full_Name.label(class="form-label")}}
+                            {{ form.Full_Name(class="form-control" + (" is-invalid" if form.Full_Name.errors else "")) }}
+                            {% if form.Full_Name.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.Full_Name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            {{ form.Email.label(class="form-label")}}
+                            {{ form.Email(class="form-control" + (" is-invalid" if form.Email.errors else "")) }}
+                            {% if form.Email.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.Email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Qualification -->
+                        <div class="mb-3">
+                            {{ form.Qualification.label(class="form-label")}}
+                            {{ form.Qualification(class="form-control" + (" is-invalid" if form.Qualification.errors else "")) }}
+                            {% if form.Qualification.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.Qualification.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            {{ form.Password.label(class="form-label")}}
+                            {{ form.Password(class="form-control" + (" is-invalid" if form.Password.errors else "")) }}
+                            {% if form.Password.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.Password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-3">
+                            {{ form.Confirm_Password.label(class="form-label")}}
+                            {{ form.Confirm_Password(class="form-control" + (" is-invalid" if form.Confirm_Password.errors else "")) }}
+                            {% if form.Confirm_Password.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.Confirm_Password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Date field -->
+
+                        <div class="mb-3">
+                            {{ form.dob.label(class="form-label") }}
+                            {{ form.dob(class="form-control" + (" is-invalid" if form.dob.errors else "")) }}
+                            {% if form.dob.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.dob.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2">
+                            {{ form.Submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card rounded">
+                <div class="card-header">
+                    <h3 class="text-center">Login</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            {{ form.Email.label(class="form-label") }}
+                            {{ form.Email(class="form-control" + (" is-invalid" if form.Email.errors else "")) }}
+                            {% if form.Email.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.Email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="mb-3">
+                            {{ form.Password.label(class="form-label") }}
+                            {{ form.Password(class="form-control" + (" is-invalid" if form.Password.errors else "")) }}
+                            {% if form.Password.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.Password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="mb-3">
+                            {{ form.Submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
