@@ -13,9 +13,12 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
+from quizmaster import routes
+from quizmaster.commands import create_admin, init_db_command
 
+app.cli.add_command(create_admin)
+app.cli.add_command(init_db_command)
 
 with app.app_context():
     db.create_all()
 
-from quizmaster import routes

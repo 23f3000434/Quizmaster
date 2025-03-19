@@ -4,7 +4,17 @@ from .forms import Login, Register
 from .models import User
 import logging
 from flask_login import login_user, current_user, logout_user, login_required
+from functools import wraps
 
+
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated or not current_user.is_admin:
+            flash('Access denied: Admin privileges required.', 'danger')
+            return redirect(url_for('hello_world'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 
 @app.route('/')
@@ -55,3 +65,9 @@ def logout():
 @login_required
 def account():
     return render_template('account.html')
+
+@app.route('/admin')
+@login_required
+@admin_required
+def admin_dashboard():
+    return render_template('admin/dashboard.html')
